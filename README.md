@@ -1,0 +1,1 @@
+Attempt to make something similar to the citydle game, which itself is inspired from Wordle. All credits to the original developers.
