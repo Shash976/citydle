@@ -16,13 +16,15 @@ h1 {
 .guess-form {
   display: flex;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
+  width: 100%;
 }
 
 .guess-input {
   padding: 15px;
   font-size: 20px;
-  width: 250px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .guess-button,
@@ -48,7 +50,6 @@ h1 {
 
 .restart-button {
   background-color: #2196f3;
-  margin-left: 10px;
 }
 
 .restart-button:hover {
@@ -66,13 +67,29 @@ h1 {
 
 .guess-row {
   display: flex;
-  gap: 15px;
+  flex-wrap: wrap;
+  gap: 6px 15px;
   align-items: center;
 }
 
+.guess-word {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.guess-space {
+  width: 12px;
+}
+
+.guess-country {
+  color: #666;
+  font-size: 0.85rem;
+}
+
 .guess-letter {
-  width: 40px;
-  height: 40px;
+  width: 34px;
+  height: 34px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -180,7 +197,8 @@ h1 {
 
 .autocomplete-wrapper {
   position: relative;
-  width: 100%;
+  flex: 1;
+  min-width: 0;
 }
 
 .autocomplete-list {
@@ -200,6 +218,15 @@ h1 {
 .autocomplete-item {
   padding: 10px 15px;
   cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.autocomplete-country {
+  color: #777;
+  font-size: 0.85rem;
+  align-self: center;
 }
 
 .autocomplete-item.highlighted,
@@ -238,4 +265,105 @@ h1 {
 .guess-count {
   margin-top: 10px;
   color: #555;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #1769aa;
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  justify-content: center;
+  font-size: 0.85rem;
+  color: #555;
+  margin-bottom: 14px;
+}
+
+.swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #999;
+  margin-right: 5px;
+  vertical-align: -1px;
+}
+
+/* Board on the left, globe on the right; stacks on narrow screens. */
+.game-layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.game-panel {
+  flex: 1 1 340px;
+  max-width: 600px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.globe-panel {
+  flex: 1 1 340px;
+  max-width: 560px;
+  min-width: 0;
+  position: sticky;
+  top: 16px;
+}
+
+.globe-frame {
+  height: 420px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 40%, #16223f, #070b17);
+}
+
+.globe-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.globe-fallback {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  color: #aab4cf;
+}
+
+.globe-help {
+  margin: 10px 4px 0;
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+@media (max-width: 480px) {
+  .guess-input {
+    font-size: 16px;
+    padding: 12px;
+  }
+  .guess-button,
+  .restart-button {
+    font-size: 16px;
+    padding: 8px 12px;
+  }
+  .globe-frame {
+    height: 320px;
+  }
 }

@@ -1,4 +1,5 @@
-import React, { useRef } from "react";
+import React from "react";
+import { cityLabel } from "../utils/cities";
 
 function AutocompleteInput({
   guess,
@@ -24,12 +25,17 @@ function AutocompleteInput({
         disabled={disabled}
         autoFocus
         autoComplete="off"
+        role="combobox"
+        aria-expanded={showSuggestions}
+        aria-autocomplete="list"
       />
       {showSuggestions && (
-        <ul className="autocomplete-list">
+        <ul className="autocomplete-list" role="listbox">
           {suggestions.map((city, idx) => (
             <li
-              key={city.name}
+              key={cityLabel(city)}
+              role="option"
+              aria-selected={idx === highlightedIdx}
               className={
                 "autocomplete-item" +
                 (idx === highlightedIdx ? " highlighted" : "")
@@ -37,6 +43,7 @@ function AutocompleteInput({
               onMouseDown={() => onSuggestionClick(city)}
             >
               {city.name}
+              <span className="autocomplete-country">{city.country}</span>
             </li>
           ))}
         </ul>
